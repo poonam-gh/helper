@@ -37,7 +37,7 @@ app.use(express.json());
 app.get('/buyer', (req, res)=> { res.send(db.buyer) })
 
 app.post('/buyer/signin', (req, res) => {
-  db.select('email', 'hash1').from('buyerlogin')
+  db.select('email', 'hash').from('buyerlogin')
     .where('email', '=', req.body.email)
     .then(data => {
       const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
