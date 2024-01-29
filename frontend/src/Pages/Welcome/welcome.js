@@ -12,19 +12,22 @@ const Welcome = () => {
         setUserType(selectedType);
     };
 
-    // const handleContinue = () => {
-    //     // Handle continue logic based on user/seller selection
-    //     if (userType === 'user') {
-    //         // Logic for user selection
-    //     } else if (userType === 'seller') {
-    //         // Logic for seller selection
-    //     }
-    // };
+    const handleContinue = () => {
+        // Handle continue logic based on user/seller selection
+        if (userType === 'user') {
+            window.location.href = '/userhome';
+            // Logic for user selection
+        } else if (userType === 'seller') {
+            window.location.href = '/sellerhome';
+            // Logic for seller selection
+        }
+    };
 
     return (
         <div className="welcome-container">
-            <h1 style={{fontSize: '2cm'}}>Welcome to Poonam !</h1>
-            <h1>Are you a user or a seller?</h1>
+            <h1 style={{fontSize: '2cm' , justifyContent: 'top'}}>Welcome to your OnlineShop!</h1>
+            <h1 style={{}}>First, let us tell about yourself...</h1>
+            <h1>Are you a buyer or a seller?</h1>
             <div className="choices-container">
                 <label className={`choice-label ${userType === 'user' ? 'selected' : ''}`}>
                     <input
@@ -34,7 +37,7 @@ const Welcome = () => {
                         checked={userType === 'user'}
                         onChange={() => handleSelection('user')}
                     />
-                    User
+                    <p id='buyer'>Buyer</p>
                     <a href="/userhome">
                         <img src= {buyer} style={{width: '400px'}} alt="User" />
                     </a>
@@ -47,13 +50,13 @@ const Welcome = () => {
                         checked={userType === 'seller'}
                         onChange={() => handleSelection('seller')}
                     />
-                    Seller
+                    <p id='seller'>Seller</p>
                     <a href="/sellerhome">
                         <img src={seller} style={{width:'300px'}} alt="Seller" />
                     </a>
                 </label>
             </div>
-            {/* <button onClick={handleContinue}>Continue</button> */}
+            <button onClick={handleContinue}>Continue</button>
         </div>
     );
 };
